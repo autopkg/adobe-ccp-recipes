@@ -15,6 +15,7 @@
 # limitations under the License.
 
 # for debugging
+from __future__ import absolute_import
 from pprint import pprint
 import os.path
 from autopkglib import Processor, ProcessorError

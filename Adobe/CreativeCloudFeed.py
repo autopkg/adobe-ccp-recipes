@@ -21,7 +21,6 @@ import string
 import json
 import urllib2
 from tempfile import mkdtemp
-from urllib import urlencode
 from distutils.version import LooseVersion as LV
 from xml.etree import ElementTree
 
@@ -29,6 +28,11 @@ from xml.etree import ElementTree
 from pprint import pprint
 
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlencode  # For Python 3
+except ImportError:
+    from urllib import urlencode  # For Python 2
 
 __all__ = ["CreativeCloudFeed"]
 

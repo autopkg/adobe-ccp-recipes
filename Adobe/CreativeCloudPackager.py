@@ -20,16 +20,16 @@
 # pylint: disable=line-too-long
 
 from __future__ import absolute_import
+
 import os
 import shutil
 import subprocess
 import uuid
-import FoundationPlist
-
 from xml.etree import ElementTree
-from Foundation import CFPreferencesCopyAppValue, CFPreferencesSetAppValue
 
+import FoundationPlist
 from autopkglib import Processor, ProcessorError
+from Foundation import CFPreferencesCopyAppValue, CFPreferencesSetAppValue
 
 __all__ = ["CreativeCloudPackager"]
 

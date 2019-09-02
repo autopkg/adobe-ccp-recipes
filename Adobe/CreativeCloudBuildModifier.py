@@ -14,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# for debugging
 from __future__ import absolute_import
-from pprint import pprint
+
 import os.path
-from autopkglib import Processor, ProcessorError
 from xml.etree import ElementTree
+
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["CreativeCloudBuildModifier"]
 

@@ -15,17 +15,12 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-import sys
-import os.path
-import string
+
 import json
+import os.path
 import urllib2
-from tempfile import mkdtemp
 from distutils.version import LooseVersion as LV
 from xml.etree import ElementTree
-
-# for debugging
-from pprint import pprint
 
 from autopkglib import Processor, ProcessorError
 

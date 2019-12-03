@@ -14,20 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
-import os.path
-import string
+from __future__ import absolute_import
+
 import json
+import os.path
 import urllib2
-from tempfile import mkdtemp
-from urllib import urlencode
 from distutils.version import LooseVersion as LV
 from xml.etree import ElementTree
 
-# for debugging
-from pprint import pprint
-
 from autopkglib import Processor, ProcessorError
+
+try:
+    from urllib.parse import urlencode  # For Python 3
+except ImportError:
+    from urllib import urlencode  # For Python 2
 
 __all__ = ["CreativeCloudFeed"]
 
@@ -208,7 +208,7 @@ class CreativeCloudFeed(Processor):
     def filter_product(self, data, sap_code, base_version, version='latest'):
         """Find product information from a feed dump given a single sap_code, base version and optional version."""
         product = {'version': '0.0.1'}
-        channels = string.split(self.env.get('channels'), ',')
+        channels = self.env.get('channels').split(',')
 
         #12 inputs to ccpinfo dict testing w BridgeCC
         for channel in data['channel']:
@@ -242,7 +242,7 @@ class CreativeCloudFeed(Processor):
         """Fetch extended information about a product such as: manifest,
         proxy (if available), release notes, and icon"""
         extended_info = {}
-        channels = string.split(self.env.get('channels'), ',')
+        channels = self.env.get('channels').split(',')
 
         # Fetch Icon
         if 'productIcons' in product:
@@ -350,8 +350,8 @@ class CreativeCloudFeed(Processor):
 
     def main(self):
         ccpinfo = self.env['ccpinfo']
-        channels = string.split(self.env.get('channels'), ',')
-        platforms = string.split(self.env.get('platforms'), ',')
+        channels = self.env.get('channels').split(',')
+        platforms = self.env.get('platforms').split(',')
 
         data = self.fetch(channels, platforms)
         self.validate_input()

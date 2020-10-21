@@ -86,6 +86,24 @@ Other Input values here correspond to options provided in the CCP UI.</string>
         <array>
             <dict>
                 <key>Processor</key>
+                <string>DeprecationWarning</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>warning_message</key>
+                    <string>These recipes have not worked since Adobe CC 2019, datajar-recipes has recipes for 2019+ and rtrouton-recipes has recipes for the Creative Cloud App.</string>
+                </dict>
+            </dict>
+            <dict>   
+                <key>Processor</key>   
+                <string>StopProcessingIf</string>   
+                <key>Arguments</key>   
+                <dict>   
+                    <key>predicate</key>   
+                    <string>TRUEPREDICATE</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
                 <string>CreativeCloudFeed</string>
                 <key>Arguments</key>
                 <dict>
